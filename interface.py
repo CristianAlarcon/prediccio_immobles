@@ -11,10 +11,6 @@ model2 = joblib.load('rforest_2.joblib')
 joblib_version = joblib.__version__
 
 
-# Nombres de las características
-feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
-                 'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
-                 ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
 
 # Interfaz de Streamlit
 st.title("Predicció d'Immobles a Barcelona")
@@ -145,6 +141,8 @@ with col1:
 
     districte_censal_str = format_number(districte_censal)
 
+# Nombres de las características
+
 
 with col2:
     # Botón para mostrar las características
@@ -165,17 +163,29 @@ with col2:
     # Botón para realizar la predicción
     if st.button('Predir'):
         # Crear un DataFrame con los valores de entrada
-        input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
-                                    terraza, piscina, garaje, metros, barri,
-                                    pob_ocupada, renta_mitjana, preuM2,
-                                    preuTeoric]], columns=feature_names)
+        if districte_censal_str != '000':
+             feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
+                 'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
+                 ' renda_mitjana_per_persona', 'PrecioM2', 'TheoricPrice']
+        else:
+             feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
+                 'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
+                 ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
 
         # Realizar la predicción
         if districte_censal_str == '000':
             st.write('primer model')
+            input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
+                                    terraza, piscina, garaje, metros, barri,
+                                    pob_ocupada, renta_mitjana, preuM2,
+                                    preuTeoric]], columns=feature_names)
             prediction = loaded_model.predict(input_data)
         else:
-            st.write('falta')
+            st.write('segon model')
+            input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
+                                    terraza, piscina, garaje, metros, barri,
+                                    pob_ocupada, renta_mitjana, preuM2,
+                                    preuTeoric]], columns=feature_names)
             
 
         # Mostrar el resultado de la predicción
