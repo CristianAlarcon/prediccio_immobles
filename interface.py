@@ -174,11 +174,11 @@ with col2:
         if districte_censal_str != '000':
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
-                 ' renda_mitjana_per_persona', 'PrecioM2', 'TheoricPrice']
+                 ' renda_mitjana_per_persona', 'PreuM2', 'preuTeoric']
         else:
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
-                 ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
+                 ' renda_mitjana_per_persona', 'PrecioM2', 'TheoricPrice']
 
         # Realizar la predicción
         if districte_censal_str == '000':
