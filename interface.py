@@ -172,6 +172,7 @@ with col2:
 
         # Realizar la predicción
         if districte_censal_str == '000':
+            st.write('primer model')
             prediction = np.round(loaded_model.predict(input_data)/1000)*1000
         else:
             st.write('falta')
