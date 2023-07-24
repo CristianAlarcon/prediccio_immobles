@@ -150,7 +150,7 @@ with col2:
         if districte_censal_str == '000':
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
-                 ' renda_mitjana_per_persona', 'PreuM2', 'preuTeoric']
+                 ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
         else:
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
@@ -174,7 +174,7 @@ with col2:
         if districte_censal_str == '000':
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
-                 ' renda_mitjana_per_persona', 'PreuM2', 'preuTeoric']
+                 ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
         else:
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
