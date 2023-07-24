@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Cargar el modelo RandomForestRegressor
-#loaded_model = joblib.load('rforest.joblib')
-model2 = joblib.load('rforest_2.joblib')
+loaded_model = joblib.load('rforest.joblib')
+#model2 = joblib.load('rforest_2.joblib')
 # Obtener la versión de Joblib
 joblib_version = joblib.__version__
 
