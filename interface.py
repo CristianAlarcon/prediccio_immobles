@@ -183,6 +183,7 @@ with col2:
         # Realizar la predicción
         if districte_censal_str == '000':
             st.write('primer model')
+            st.write(preuM2)
             input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
                                     terraza, piscina, garaje, metros, barri,
                                     pob_ocupada, renta_mitjana, PreuM2,
