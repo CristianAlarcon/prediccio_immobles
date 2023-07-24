@@ -10,6 +10,11 @@ model2 = joblib.load('rforest_2.joblib')
 # Obtener la versión de Joblib
 joblib_version = joblib.__version__
 
+# Carreguem els preus per districte censal
+data1 = pd.read_excel('MunicipioBarcelona_Censo.xlsx')
+
+data1['PrecioM2'] = data1['Precio'].str.replace('.','').str.replace(',', '.')
+data1['PrecioM2'] = data1['PrecioM2'].str.extract('(\d+.\d+)').astype(float)
 
 
 # Interfaz de Streamlit
@@ -137,12 +142,13 @@ with col1:
 
     opcions = list(range(151))
 
-    districte_censal = st.selectbox("Selecciona el districte censal", opcions)
+    districte_censal = st.selectbox("Selecciona el districte censal, deixa 0 si no", opcions)
 
     districte_censal_str = format_number(districte_censal)
 
 # Nombres de las características
-
+if districte_censal_str != '000':
+    
 
 with col2:
     # Botón para mostrar las características
