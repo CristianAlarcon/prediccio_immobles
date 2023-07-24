@@ -147,6 +147,14 @@ with col1:
 with col2:
     # Botón para mostrar las características
     if st.button('Mostrar Característiques'):
+        if districte_censal_str != '000':
+             feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
+                 'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
+                 ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
+        else:
+             feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
+                 'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
+                 ' renda_mitjana_per_persona', 'PrecioM2', 'TheoricPrice']
         # Crear un gráfico de barras para visualizar las importancias
         # de las características
         importances = loaded_model.feature_importances_
@@ -177,8 +185,8 @@ with col2:
             st.write('primer model')
             input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
                                     terraza, piscina, garaje, metros, barri,
-                                    pob_ocupada, renta_mitjana, preuM2,
-                                    preuTeoric]], columns=feature_names)
+                                    pob_ocupada, renta_mitjana, PrecioM2,
+                                    TheoricPrice]], columns=feature_names)
             prediction = loaded_model.predict(input_data)
         else:
             st.write('segon model')
