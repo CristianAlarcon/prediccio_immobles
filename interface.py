@@ -186,7 +186,7 @@ with col2:
             st.write(preuM2)
             input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
                                     terraza, piscina, garaje, metros, barri,
-                                    pob_ocupada, renta_mitjana, PreuM2,
+                                    pob_ocupada, renta_mitjana, preuM2,
                                     preuTeoric]], columns=feature_names)
             prediction = loaded_model.predict(input_data)
         else:
