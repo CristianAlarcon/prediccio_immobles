@@ -147,7 +147,7 @@ with col1:
 with col2:
     # Botón para mostrar las características
     if st.button('Mostrar Característiques'):
-        if districte_censal_str != '000':
+        if districte_censal_str == '000':
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
                  ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
