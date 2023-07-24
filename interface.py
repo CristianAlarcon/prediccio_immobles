@@ -171,7 +171,7 @@ with col2:
     # Botón para realizar la predicción
     if st.button('Predir'):
         # Crear un DataFrame con los valores de entrada
-        if districte_censal_str != '000':
+        if districte_censal_str == '000':
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
                  ' renda_mitjana_per_persona', 'PreuM2', 'preuTeoric']
