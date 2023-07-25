@@ -159,6 +159,7 @@ if districte_censal_str != '000':
     st.write(codi_censal)
     try:
         precioM2 = obtenir_preu_per_zona(data1, int(codi_censal))
+        st.write(precioM2)
     except ValueError as e:
         print(e)
     TheoricPrice = precioM2 * metros
