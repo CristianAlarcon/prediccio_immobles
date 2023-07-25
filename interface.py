@@ -145,22 +145,24 @@ with col1:
 
 # Nombres de las características
 if districte_censal_str != '000':
+
     def obtenir_preu_per_zona(df, zona):
-    try:
-        fila = df.loc[df['zona'] == zona]
-        precio_m2 = fila['precioM2'].values[0]        
-        return precio_m2
-    except IndexError:
-        # Si no se encuentra la zona, se levanta un IndexError
-        raise ValueError("Zona no existent")
-         
-    codi_censal = "0819"+ f"{barri:02d} + districte_censal_str
+        try:
+            fila = df.loc[df['zona'] == zona]
+            precio_m2 = fila['precioM2'].values[0]
+            return precio_m2
+        except IndexError:
+            # Si no se encuentra la zona, se levanta un IndexError
+            raise ValueError("Zona no existent")
+
+    codi_censal = "0819" + f"{barri:02d}" + districte_censal_str
     st.write(codi_censal)
     try:
         precioM2 = obtenir_preu_per_zona(data1, codi_censal)
     except ValueError as e:
         print(e)
     TheoricPrice = precioM2 * metros
+
 
 with col2:
     # Botón para mostrar las características
