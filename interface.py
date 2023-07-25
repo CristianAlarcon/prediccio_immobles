@@ -11,7 +11,7 @@ model2 = joblib.load('rforest_2.joblib')
 joblib_version = joblib.__version__
 
 # Carreguem els preus per districte censal
-data1 = pd.read_csv('PreuBarceolaCens.csv')
+data1 = pd.read_csv('PreuBarcelonaCens.csv')
 
 
 # Interfaz de Streamlit
@@ -162,6 +162,7 @@ if districte_censal_str != '000':
     except ValueError as e:
         print(e)
     TheoricPrice = precioM2 * metros
+
 
 
 with col2:
