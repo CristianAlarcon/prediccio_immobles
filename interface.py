@@ -155,7 +155,7 @@ if districte_censal_str != '000':
             # Si no se encuentra la zona, se levanta un IndexError
             raise ValueError("Zona no existent")
 
-    codi_censal = "0819" + f"{barri:02d}" + districte_censal_str
+    codi_censal = "8019" + f"{barri:02d}" + districte_censal_str
     st.write(codi_censal)
     try:
         precioM2 = obtenir_preu_per_zona(data1, int(codi_censal))
