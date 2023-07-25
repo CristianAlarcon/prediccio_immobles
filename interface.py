@@ -11,10 +11,7 @@ model2 = joblib.load('rforest_2.joblib')
 joblib_version = joblib.__version__
 
 # Carreguem els preus per districte censal
-data1 = pd.read_excel('MunicipioBarcelona_Censo.xlsx')
-
-data1['PrecioM2'] = data1['Precio'].str.replace('.','').str.replace(',', '.')
-data1['PrecioM2'] = data1['PrecioM2'].str.extract('(\d+.\d+)').astype(float)
+data1 = pd.read_csv('PreuBarceolaCens.csv')
 
 
 # Interfaz de Streamlit
@@ -148,7 +145,23 @@ with col1:
 
 # Nombres de las características
 if districte_censal_str != '000':
-    
+    def obtenir_preu_per_zona(df, zona):
+    try:
+       
+        fila = df.loc[df['zona'] == zona]
+        precio_m2 = fila['precioM2'].values[0]        
+        return precio_m2
+    except IndexError:
+        # Si no se encuentra la zona, se levanta un IndexError
+        raise ValueError("Zona no existent")
+         
+    codi_censal = "0819"+ f"{barri:02d} + districte_censal_str
+    st.write(codi_censal)
+    try:
+        precioM2 = obtenir_preu_per_zona(data1, codi_censal)
+    except ValueError as e:
+        print(e)
+    TheoricPrice = precioM2 * metros
 
 with col2:
     # Botón para mostrar las características
@@ -157,13 +170,15 @@ with col2:
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
                  ' renda_mitjana_per_persona', 'PreuM2', 'preu_teoric']
+             chosen_model = loaded_model
         else:
              feature_names = ['Caracteristicas', 'Habitaciones', 'Aseos', 'Terraza',
                  'Piscina', 'Garaje', 'Metros', 'Barri', ' Poblacio_ocupada',
                  ' renda_mitjana_per_persona', 'PrecioM2', 'TheoricPrice']
+             chosen_model = model2
         # Crear un gráfico de barras para visualizar las importancias
         # de las características
-        importances = loaded_model.feature_importances_
+        importances = chosen_model.feature_importances_
         fig, ax = plt.subplots()
         ax.barh(range(len(importances)), importances)
         ax.set_yticks(range(len(feature_names)))
@@ -201,7 +216,7 @@ with col2:
                                     terraza, piscina, garaje, metros, barri,
                                     pob_ocupada, renta_mitjana, precioM2,
                                     TheoricPrice]], columns=feature_names)
-            
+            prediction = model2.predict(input_data)
 
         # Mostrar el resultado de la predicción
         st.write(
