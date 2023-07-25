@@ -149,7 +149,7 @@ if districte_censal_str != '000':
     def obtenir_preu_per_zona(df, zona):
         try:
             fila = df.loc[df['Zona'] == zona]
-            precio_m2 = fila['precioM2'].values[0]
+            precio_m2 = fila['PrecioM2'].values[0]
             return precio_m2
         except IndexError:
             # Si no se encuentra la zona, se levanta un IndexError
