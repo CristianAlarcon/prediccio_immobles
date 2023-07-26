@@ -141,7 +141,7 @@ with col1:
     opcio_inici = data['Cens'][data['Barri']==f"{barri:02d}"].tolist()
     opcions_zero = ['0'] + opcio_inici
     opcions = [num.zfill(3) for num in opcions_zero]
-         
+    opcions = sorted(opcions)     
     districte_censal_str = st.selectbox("Selecciona el districte censal, deixa 0 si no", opcions)
 
     
