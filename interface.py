@@ -137,15 +137,14 @@ with col1:
         convertir_barri_numeric(barri_valor)
     preuTeoric = preuM2 * metros
     
-    def format_number(num):
-        return f"{num:03d}"
 
     opcio_inici = data['Cens'][data['Barri']==f"{barri:02d}"].tolist()
-    opcions = ['0'] + opcio_inici
+    opcions_zero = ['0'] + opcio_inici
+    opcions = [num.zfill(3) for num in opcions_zero]
          
-    districte_censal = st.selectbox("Selecciona el districte censal, deixa 0 si no", opcions)
+    districte_censal_str = st.selectbox("Selecciona el districte censal, deixa 0 si no", opcions)
 
-    districte_censal_str = format_number(districte_censal)
+    
 
 # Nombres de las características
 if districte_censal_str != '000':
