@@ -12,8 +12,10 @@ joblib_version = joblib.__version__
 
 # Carreguem els preus per districte censal
 data1 = pd.read_csv('PreusBarcelonaCens.csv')
-data1['Cens'] = data1['Zona'].str.slice(-3)
-data1['Barri'] = data1['Zona'].str.slice(-5,-3)
+data = data1.copy()
+data['Zona'] = data['Zona'].astype(str)
+data['Cens'] = data['Zona'].str.slice(-3)
+data['Barri'] = data['Zona'].str.slice(-5,-3)
 
 # Interfaz de Streamlit
 st.title("Predicció d'Immobles a Barcelona")
