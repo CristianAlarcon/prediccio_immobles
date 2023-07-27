@@ -149,11 +149,9 @@ with col1:
 if districte_censal_str != '000':
 
     codi_censal = "8019" + f"{barri:02d}" + districte_censal_str
-    st.write(codi_censal)
     try:
         fila = data1.loc[data1['Zona'] == int(codi_censal)]     
         precioM2 = fila['PrecioM2'].values[0]
-        st.write(precioM2)
     except IndexError:
         raise ValueError("Zona no existent")
     TheoricPrice = precioM2 * metros
@@ -201,7 +199,6 @@ with col2:
         # Realizar la predicción
         if districte_censal_str == '000':
             st.write('primer model')
-            st.write(preuM2)
             input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
                                     terraza, piscina, garaje, metros, barri,
                                     pob_ocupada, renta_mitjana, preuM2,
