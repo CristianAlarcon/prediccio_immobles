@@ -18,8 +18,7 @@ data['Cens'] = data['Zona'].str.slice(-3)
 data['Barri'] = data['Zona'].str.slice(-5,-3)
 
 # Interfaz de Streamlit
-st.title("Predicció d'Immobles a Barcelona")
-st.write("Versión de Joblib:", joblib_version)
+st.title("Predicció de preus d'Immobles a Barcelona (2023)")
 st.write('Introdueix els valors de les característiques y prem el botó '
          'corresponent.')
 caracteristicas_valores = ('Apartament', 'Àtic', 'Finca Rústica', 'Duplex',
