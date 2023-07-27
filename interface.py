@@ -198,14 +198,12 @@ with col2:
 
         # Realizar la predicción
         if districte_censal_str == '000':
-            st.write('primer model')
             input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
                                     terraza, piscina, garaje, metros, barri,
                                     pob_ocupada, renta_mitjana, preuM2,
                                     preuTeoric]], columns=feature_names)
             prediction = loaded_model.predict(input_data)
         else:
-            st.write('segon model')
             input_data = pd.DataFrame([[caracteristicas, habitaciones, aseos,
                                     terraza, piscina, garaje, metros, barri,
                                     pob_ocupada, renta_mitjana, precioM2,
